@@ -1,19 +1,55 @@
 <!DOCTYPE html>
 <html>
-	<head>
-	</head>
+  <head>
+  </head>
 
-	<body>
-		
+  <body>
+    Search for the movie: <input type="text" value=""> <br><br>
 
-		<style>
+    <p>Sort by Title</p><p>Sort by Year</p>
 
-		</style>
-		<script>
-			console.log('hi');
+    <ul id="moviesection">
+      List all the movies here
+    </ul>
 
-		</script>
+    <style>
 
-		<script src="lodash.js"></script>
-	</body>
+    </style>
+    <script>
+      (function(){
+
+        var server_response = {
+          "data": [{
+            "title": "Shawshank Redemption",
+            "year": "1994"
+          },
+          {
+            "title": "The Godfather",
+            "year": "1972"
+          },
+          {
+            "title": "Dark Knight",
+            "year": "2008"
+          }]
+        };
+
+        console.log(server_response);
+
+        var moviesection = document.getElementById('moviesection');
+        for (var i = 0; i < server_response.data.length; i++) {
+          var li = document.createElement("li");
+          newText = document.createTextNode("Title: " + server_response.data[i].title + ", Year: " + server_response.data[i].year);
+          li.appendChild(newText);
+          moviesection.appendChild(li);
+        }
+        
+
+      })();
+
+      
+
+    </script>
+
+    <script src="lodash.js"></script>
+  </body>
 </html>
